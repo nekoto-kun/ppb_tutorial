@@ -16,6 +16,10 @@ class HomeScreen extends StatelessWidget {
         padding: EdgeInsets.all(16),
         child: SimpleForm(),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.save),
+      ),
     );
   }
 }
