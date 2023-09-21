@@ -4,6 +4,26 @@ import 'package:intl/intl.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  void handleShowSnackBar(BuildContext context) {
+    final snackbar = SnackBar(
+      content: const Text('This is snackbar'),
+      action: SnackBarAction(
+        label: 'Info',
+        onPressed: () {
+          showAboutDialog(
+            context: context,
+            applicationIcon: const FlutterLogo(),
+            applicationName: 'Flutter Demo',
+            applicationVersion: '1.0.0',
+            children: const [Text('This is about dialog')],
+          );
+        },
+      ),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +37,9 @@ class HomeScreen extends StatelessWidget {
         child: SimpleForm(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          handleShowSnackBar(context);
+        },
         child: const Icon(Icons.save),
       ),
     );
