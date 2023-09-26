@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:ppb_tutorial/asset_screen.dart';
 import 'package:ppb_tutorial/form_screen.dart';
 // import 'package:ppb_tutorial/home_screen.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
+        fontFamily: 'Montserrat',
       ),
       home: const FormScreen(),
     );
