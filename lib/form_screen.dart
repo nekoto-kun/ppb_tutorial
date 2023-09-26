@@ -9,6 +9,7 @@ class FormScreen extends StatefulWidget {
 
 class _FormScreenState extends State<FormScreen> {
   final _formKey = GlobalKey<FormState>();
+  int? _value = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,26 @@ class _FormScreenState extends State<FormScreen> {
               },
             ),
             const SizedBox(height: 16),
+            DropdownButtonFormField(
+              items: const [
+                DropdownMenuItem(
+                  value: 1,
+                  child: Text('Option 1'),
+                ),
+                DropdownMenuItem(
+                  value: 2,
+                  child: Text('Option 2'),
+                ),
+              ],
+              onChanged: (value) {
+                setState(() {
+                  _value = value;
+                });
+              },
+              value: _value,
+            ),
+            const SizedBox(height: 16),
+            Text('Selected value: $_value'),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
