@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/providers/auth_provider.dart';
 import 'package:myapp/providers/contact_provider.dart';
 import 'package:myapp/screens/about_screen.dart';
 import 'package:myapp/screens/manage_contact_screen.dart';
 import 'package:myapp/widgets/contact_list_widget.dart';
 import 'package:myapp/widgets/form_widget.dart';
-import 'package:myapp/widgets/greetings_widget.dart';
+// import 'package:myapp/widgets/greetings_widget.dart';
 import 'package:myapp/widgets/post_list_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   void _onItemTapped(int index) {
+    if (index == 3) {
+      Provider.of<AuthProvider>(context, listen: false).logout();
+      return;
+    }
+
     setState(() {
       _selectedIndex = index;
     });
@@ -33,9 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<AuthProvider>(context).user;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text(user?.email ?? 'Guest'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
           IconButton(
@@ -45,9 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const AboutScreen(),
-                  settings: const RouteSettings(
-                    arguments: 'HELLOW',
-                  ),
+                  settings: const RouteSettings(arguments: 'HELLOW'),
                 ),
               );
             },
@@ -65,14 +71,15 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ManageContactScreen(),
-                ),
-              );
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ManageContactScreen(),
+            ),
+          );
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -88,6 +95,11 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.people),
             label: 'Contacts',
             tooltip: 'Daftar kontak',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.logout),
+            label: 'Logout',
+            tooltip: 'Logout',
           ),
         ],
         currentIndex: _selectedIndex,

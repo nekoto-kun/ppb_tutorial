@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/providers/contact_provider.dart';
-import 'package:myapp/screens/manage_contact_screen.dart';
-import 'package:provider/provider.dart';
+// import 'package:myapp/providers/contact_provider.dart';
+// import 'package:myapp/screens/manage_contact_screen.dart';
+// import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ContactListWidget extends StatefulWidget {
@@ -12,9 +12,7 @@ class ContactListWidget extends StatefulWidget {
 }
 
 class _ContactListWidgetState extends State<ContactListWidget> {
-  final _future = Supabase.instance.client
-      .from('contacts')
-      .select();
+  final _future = Supabase.instance.client.from('contacts').select();
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +34,9 @@ class _ContactListWidgetState extends State<ContactListWidget> {
               title: Text(contact['name']),
               subtitle: Text(contact['email']),
             );
-          }
+          },
         );
-      }
+      },
     );
   }
 }

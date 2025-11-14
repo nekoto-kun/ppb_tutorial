@@ -16,7 +16,7 @@ class _FormWidgetState extends State<FormWidget> {
   final _nameController = TextEditingController();
 
   String? _selectedGender;
-  bool _agreeToTerms = false;
+  // bool _agreeToTerms = false;
 
   @override
   void dispose() {
@@ -27,13 +27,13 @@ class _FormWidgetState extends State<FormWidget> {
   }
 
   void _resetForm() {
-     _formKey.currentState!.reset();
+    _formKey.currentState!.reset();
     _nameController.clear();
     _emailController.clear();
     _passwordController.clear();
     setState(() {
       _selectedGender = null;
-      _agreeToTerms = false;
+      // _agreeToTerms = false;
     });
   }
 
@@ -69,7 +69,7 @@ class _FormWidgetState extends State<FormWidget> {
                   return 'Gender is required';
                 }
                 return null;
-              }
+              },
             ),
             SubmitFormButton(
               formKey: _formKey,
@@ -174,9 +174,7 @@ class SubmitFormButton extends StatelessWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => const Center(
-        child: CircularProgressIndicator(),
-      ),
+      builder: (context) => const Center(child: CircularProgressIndicator()),
     );
 
     Future.delayed(const Duration(seconds: 2), () {

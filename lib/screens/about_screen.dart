@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/form_widget.dart';
-import 'package:myapp/widgets/greetings_widget.dart';
+// import 'package:myapp/widgets/form_widget.dart';
+// import 'package:myapp/widgets/greetings_widget.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -16,12 +16,12 @@ class AboutScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            }, 
-            child: Text('Back'),
-          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Back'),
         ),
+      ),
     );
   }
 }
