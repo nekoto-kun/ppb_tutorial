@@ -1,5 +1,7 @@
 # myapp
 
+[![Codemagic build status](https://api.codemagic.io/apps/6917f7d83488254a8b463e47/6917f7d83488254a8b463e46/status_badge.svg)](https://codemagic.io/app/6917f7d83488254a8b463e47/6917f7d83488254a8b463e46/latest_build)
+
 A new Flutter project.
 
 ## Getting Started
